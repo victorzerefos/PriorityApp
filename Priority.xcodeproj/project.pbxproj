@@ -37,6 +37,44 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		92A954922694C0C500893F53 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				92EEEB342694ACB600B1E74D /* Persistence.swift */,
+				92EEEB362694ACB600B1E74D /* Priority.xcdatamodeld */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		92A954932694C0CC00893F53 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				92EEEB2D2694ACB400B1E74D /* ContentView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		92A954942694C0DF00893F53 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		92A954952694C0EF00893F53 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
+		92A954962694C10100893F53 /* Style */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Style;
+			sourceTree = "<group>";
+		};
 		92EEEB1F2694ACB400B1E74D = {
 			isa = PBXGroup;
 			children = (
@@ -57,11 +95,13 @@
 			isa = PBXGroup;
 			children = (
 				92EEEB2B2694ACB400B1E74D /* PriorityApp.swift */,
-				92EEEB2D2694ACB400B1E74D /* ContentView.swift */,
+				92A954932694C0CC00893F53 /* View */,
+				92A954922694C0C500893F53 /* Model */,
+				92A954952694C0EF00893F53 /* Utility */,
+				92A954962694C10100893F53 /* Style */,
+				92A954942694C0DF00893F53 /* Extension */,
 				92EEEB2F2694ACB600B1E74D /* Assets.xcassets */,
-				92EEEB342694ACB600B1E74D /* Persistence.swift */,
 				92EEEB392694ACB600B1E74D /* Info.plist */,
-				92EEEB362694ACB600B1E74D /* Priority.xcdatamodeld */,
 				92EEEB312694ACB600B1E74D /* Preview Content */,
 			);
 			path = Priority;
@@ -288,7 +328,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = br.com.zcodes.Priority;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -310,7 +350,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = br.com.zcodes.Priority;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
