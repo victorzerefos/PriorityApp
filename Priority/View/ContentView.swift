@@ -9,6 +9,11 @@ import SwiftUI
 import CoreData
 
 struct ContentView: View {
+    // MARK: -  Property
+    
+    @State var task: String = ""
+    
+    // MARK: -  Fetching Data
     @Environment(\.managedObjectContext) private var viewContext
     
     @FetchRequest(
@@ -16,14 +21,52 @@ struct ContentView: View {
         animation: .default)
     private var items: FetchedResults<Item>
     
+    // MARK: -  Body
     var body: some View {
         NavigationView {
-            List {
-                ForEach(items) { item in
-                    Text("Item at \(item.timestamp!, formatter: itemFormatter)")
-                }
-                .onDelete(perform: deleteItems)
-            } //: - LIST
+            VStack {
+                VStack(spacing: 16, content: {
+                    TextField("New Task", text: $task)
+                        .padding()
+                        .background(
+                            Color(UIColor.systemGray6)
+                        )
+                        .cornerRadius(10)
+                    
+                    Button(action: {
+                        addItem()
+                    }, label: {
+                        Spacer()
+                        Text("SAVE")
+                        Spacer()
+                    })
+                    .padding()
+                    .font(.headline)
+                    .foregroundColor(.white)
+                    .background(Color.red)
+                    .cornerRadius(10)
+                }) //: - VSTACK
+                .padding(10)
+                
+                List {
+                    ForEach(items) { item in
+                        VStack(alignment: .leading) {
+                            Text(item.task ?? "")
+                                .font(.headline)
+                                .fontWeight(.bold)
+                               
+                            
+                            Text("Created at \(item.timestamp!, formatter: itemFormatter)")
+                                .font(.footnote)
+                                .foregroundColor(.gray)
+                        } //: - List Item
+                    }
+                    .onDelete(perform: deleteItems)
+                } //: - LIST
+            } //: - VSTACK
+            
+            .navigationBarTitle("Daily Priorities")
+            
             .toolbar {
                 #if os(iOS)
                 ToolbarItem(placement: .navigationBarLeading) {
@@ -36,14 +79,19 @@ struct ContentView: View {
                         Label("Add Item", systemImage: "plus")
                     }
                 }
-            } //: - TOOLBAR
+            }//: - TOOLBAR
         } //: - NAVIGATION
     }
+    
+    // MARK: -  FUNCTIONS
     
     private func addItem() {
         withAnimation {
             let newItem = Item(context: viewContext)
             newItem.timestamp = Date()
+            newItem.task = task
+            newItem.completion = false
+            newItem.id = UUID()
             
             do {
                 try viewContext.save()
@@ -67,13 +115,6 @@ struct ContentView: View {
         }
     }
 }
-
-private let itemFormatter: DateFormatter = {
-    let formatter = DateFormatter()
-    formatter.dateStyle = .short
-    formatter.timeStyle = .medium
-    return formatter
-}()
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {

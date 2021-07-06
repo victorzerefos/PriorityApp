@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		92A954982694CAE200893F53 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92A954972694CAE200893F53 /* Constant.swift */; };
 		92EEEB2C2694ACB400B1E74D /* PriorityApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92EEEB2B2694ACB400B1E74D /* PriorityApp.swift */; };
 		92EEEB2E2694ACB400B1E74D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92EEEB2D2694ACB400B1E74D /* ContentView.swift */; };
 		92EEEB302694ACB600B1E74D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 92EEEB2F2694ACB600B1E74D /* Assets.xcassets */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		92A954972694CAE200893F53 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		92EEEB282694ACB400B1E74D /* Priority.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Priority.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		92EEEB2B2694ACB400B1E74D /* PriorityApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriorityApp.swift; sourceTree = "<group>"; };
 		92EEEB2D2694ACB400B1E74D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -64,6 +66,7 @@
 		92A954952694C0EF00893F53 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				92A954972694CAE200893F53 /* Constant.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -186,6 +189,7 @@
 			files = (
 				92EEEB352694ACB600B1E74D /* Persistence.swift in Sources */,
 				92EEEB2E2694ACB400B1E74D /* ContentView.swift in Sources */,
+				92A954982694CAE200893F53 /* Constant.swift in Sources */,
 				92EEEB2C2694ACB400B1E74D /* PriorityApp.swift in Sources */,
 				92EEEB382694ACB600B1E74D /* Priority.xcdatamodeld in Sources */,
 			);
