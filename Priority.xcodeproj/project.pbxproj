@@ -7,17 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		920E0606269504B700F7BF33 /* BackgroundImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920E0605269504B700F7BF33 /* BackgroundImageView.swift */; };
+		920E0608269506F200F7BF33 /* NewTaskItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920E0607269506F200F7BF33 /* NewTaskItemView.swift */; };
+		920E060A26950EA500F7BF33 /* BlankView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920E060926950EA500F7BF33 /* BlankView.swift */; };
 		92A954982694CAE200893F53 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92A954972694CAE200893F53 /* Constant.swift */; };
+		92A9549A2694D32D00893F53 /* HideKeyboardExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92A954992694D32D00893F53 /* HideKeyboardExtension.swift */; };
 		92EEEB2C2694ACB400B1E74D /* PriorityApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92EEEB2B2694ACB400B1E74D /* PriorityApp.swift */; };
 		92EEEB2E2694ACB400B1E74D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92EEEB2D2694ACB400B1E74D /* ContentView.swift */; };
 		92EEEB302694ACB600B1E74D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 92EEEB2F2694ACB600B1E74D /* Assets.xcassets */; };
 		92EEEB332694ACB600B1E74D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 92EEEB322694ACB600B1E74D /* Preview Assets.xcassets */; };
 		92EEEB352694ACB600B1E74D /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92EEEB342694ACB600B1E74D /* Persistence.swift */; };
 		92EEEB382694ACB600B1E74D /* Priority.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 92EEEB362694ACB600B1E74D /* Priority.xcdatamodeld */; };
+		92F33F9A2695250B001AFFEC /* ListRowItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F33F992695250B001AFFEC /* ListRowItemView.swift */; };
+		92F33F9C26952BD8001AFFEC /* CheckBoxStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F33F9B26952BD8001AFFEC /* CheckBoxStyle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		920E0605269504B700F7BF33 /* BackgroundImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundImageView.swift; sourceTree = "<group>"; };
+		920E0607269506F200F7BF33 /* NewTaskItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTaskItemView.swift; sourceTree = "<group>"; };
+		920E060926950EA500F7BF33 /* BlankView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlankView.swift; sourceTree = "<group>"; };
 		92A954972694CAE200893F53 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		92A954992694D32D00893F53 /* HideKeyboardExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HideKeyboardExtension.swift; sourceTree = "<group>"; };
 		92EEEB282694ACB400B1E74D /* Priority.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Priority.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		92EEEB2B2694ACB400B1E74D /* PriorityApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriorityApp.swift; sourceTree = "<group>"; };
 		92EEEB2D2694ACB400B1E74D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -26,6 +36,8 @@
 		92EEEB342694ACB600B1E74D /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		92EEEB372694ACB600B1E74D /* Priority.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Priority.xcdatamodel; sourceTree = "<group>"; };
 		92EEEB392694ACB600B1E74D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		92F33F992695250B001AFFEC /* ListRowItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRowItemView.swift; sourceTree = "<group>"; };
+		92F33F9B26952BD8001AFFEC /* CheckBoxStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBoxStyle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +64,10 @@
 			isa = PBXGroup;
 			children = (
 				92EEEB2D2694ACB400B1E74D /* ContentView.swift */,
+				920E0605269504B700F7BF33 /* BackgroundImageView.swift */,
+				920E0607269506F200F7BF33 /* NewTaskItemView.swift */,
+				920E060926950EA500F7BF33 /* BlankView.swift */,
+				92F33F992695250B001AFFEC /* ListRowItemView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -59,6 +75,7 @@
 		92A954942694C0DF00893F53 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				92A954992694D32D00893F53 /* HideKeyboardExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -74,6 +91,7 @@
 		92A954962694C10100893F53 /* Style */ = {
 			isa = PBXGroup;
 			children = (
+				92F33F9B26952BD8001AFFEC /* CheckBoxStyle.swift */,
 			);
 			path = Style;
 			sourceTree = "<group>";
@@ -188,10 +206,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				92EEEB352694ACB600B1E74D /* Persistence.swift in Sources */,
+				920E0606269504B700F7BF33 /* BackgroundImageView.swift in Sources */,
 				92EEEB2E2694ACB400B1E74D /* ContentView.swift in Sources */,
+				92A9549A2694D32D00893F53 /* HideKeyboardExtension.swift in Sources */,
+				920E060A26950EA500F7BF33 /* BlankView.swift in Sources */,
 				92A954982694CAE200893F53 /* Constant.swift in Sources */,
+				92F33F9A2695250B001AFFEC /* ListRowItemView.swift in Sources */,
 				92EEEB2C2694ACB400B1E74D /* PriorityApp.swift in Sources */,
+				92F33F9C26952BD8001AFFEC /* CheckBoxStyle.swift in Sources */,
 				92EEEB382694ACB600B1E74D /* Priority.xcdatamodeld in Sources */,
+				920E0608269506F200F7BF33 /* NewTaskItemView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

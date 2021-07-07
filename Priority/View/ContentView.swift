@@ -10,8 +10,10 @@ import CoreData
 
 struct ContentView: View {
     // MARK: -  Property
-    
+    @AppStorage("isDarkMode") private var isDarkMode: Bool = false
     @State var task: String = ""
+    @State private var showNewTaskItem: Bool = false
+    
     
     // MARK: -  Fetching Data
     @Environment(\.managedObjectContext) private var viewContext
@@ -24,84 +26,103 @@ struct ContentView: View {
     // MARK: -  Body
     var body: some View {
         NavigationView {
-            VStack {
-                VStack(spacing: 16, content: {
-                    TextField("New Task", text: $task)
-                        .padding()
-                        .background(
-                            Color(UIColor.systemGray6)
-                        )
-                        .cornerRadius(10)
+            ZStack {
+                // MARK: -  MAIN VIEW
+                
+                VStack {
                     
-                    Button(action: {
-                        addItem()
-                    }, label: {
+                    // MARK: -  HEADER
+                    HStack(spacing: 10) {
+                        //: - title
+                        Text("Priority")
+                            .font(.system(.largeTitle, design: .rounded))
+                            .fontWeight(.black)
+                            .padding(.leading, 4)
+                            .shadow(radius: 3)
+                        
                         Spacer()
-                        Text("SAVE")
-                        Spacer()
-                    })
+                        
+                        //: - Add Button
+                        Button(action: {
+                            showNewTaskItem = true
+                        }, label: {
+                            Image(systemName: "plus")
+                                .font(.system(size: 16, weight: .black, design: .rounded))
+                                .padding(.horizontal, 10)
+                                .frame(minWidth: 60, minHeight: 24)
+                                .background(
+                                    Capsule().stroke(Color.white, lineWidth: 2)
+                                )
+                                
+                        })
+                        
+                        //: - Edit button
+                        EditButton()
+                            .font(.system(size: 16, weight: .black, design: .rounded))
+                            .padding(.horizontal, 10)
+                            .frame(minWidth: 60, minHeight: 24)
+                            .background(
+                                Capsule().stroke(Color.white, lineWidth: 2)
+                            )
+
+                        //: - Appearence Button
+                        Button(action: {
+                            isDarkMode.toggle()
+                        }, label: {
+                            Image(systemName: isDarkMode ? "moon.circle.fill" : "moon.circle")
+                                .resizable()
+                                .frame(width: 24, height: 24, alignment: .center)
+                                .font(.system(.title, design: .rounded))
+                        })
+                        
+                    } //: - HSTACK
                     .padding()
-                    .font(.headline)
                     .foregroundColor(.white)
-                    .background(Color.red)
-                    .cornerRadius(10)
-                }) //: - VSTACK
-                .padding(10)
+                    
+                    Spacer(minLength: 100)
+                    
+                    // MARK: -  TASKS
+                    List {
+                        ForEach(items) { item in
+                           ListRowItemView(item: item)
+                        }
+                        .onDelete(perform: deleteItems)
+                    } //: - LIST
+                    .listStyle(InsetGroupedListStyle())
+                } //: - VSTACK
                 
-                List {
-                    ForEach(items) { item in
-                        VStack(alignment: .leading) {
-                            Text(item.task ?? "")
-                                .font(.headline)
-                                .fontWeight(.bold)
-                               
-                            
-                            Text("Created at \(item.timestamp!, formatter: itemFormatter)")
-                                .font(.footnote)
-                                .foregroundColor(.gray)
-                        } //: - List Item
-                    }
-                    .onDelete(perform: deleteItems)
-                } //: - LIST
-            } //: - VSTACK
-            
-            .navigationBarTitle("Daily Priorities")
-            
-            .toolbar {
-                #if os(iOS)
-                ToolbarItem(placement: .navigationBarLeading) {
-                    EditButton()
-                }
-                #endif
+                // MARK: -  NEW TASK ITEM
                 
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button(action: addItem) {
-                        Label("Add Item", systemImage: "plus")
-                    }
+                if showNewTaskItem {
+                    BlankView()
+                        .onTapGesture {
+                            withAnimation() {
+                                showNewTaskItem = false
+                            }
+                        }
+                    
+                    NewTaskItemView(isShowing: $showNewTaskItem)
                 }
-            }//: - TOOLBAR
+                
+            } //: - ZSTACK
+            .onAppear() {
+                UITableView.appearance().backgroundColor = UIColor.clear
+            }
+            .navigationBarTitle("Priorities")
+            .navigationBarHidden(true)
+            .background(
+                BackgroundImageView()
+            )
+            .background(
+                backgroundGradient.ignoresSafeArea(.all)
+            )
         } //: - NAVIGATION
+        .navigationViewStyle(StackNavigationViewStyle())
+        .shadow(color: Color(red: 0, green: 0, blue: 0, opacity: 0.3), radius: 12)
     }
     
     // MARK: -  FUNCTIONS
-    
-    private func addItem() {
-        withAnimation {
-            let newItem = Item(context: viewContext)
-            newItem.timestamp = Date()
-            newItem.task = task
-            newItem.completion = false
-            newItem.id = UUID()
-            
-            do {
-                try viewContext.save()
-            } catch {
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-            }
-        }
-    }
-    
+
     private func deleteItems(offsets: IndexSet) {
         withAnimation {
             offsets.map { items[$0] }.forEach(viewContext.delete)
