@@ -15,6 +15,7 @@ struct CheckBoxStyle: ToggleStyle {
                 .font(.system(size: 24, weight: .bold, design: .rounded))
                 .onTapGesture {
                     configuration.isOn.toggle()
+                    feedback.notificationOccurred(.success)
                 }
             
             configuration.label

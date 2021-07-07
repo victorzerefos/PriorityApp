@@ -45,6 +45,7 @@ struct ContentView: View {
                         //: - Add Button
                         Button(action: {
                             showNewTaskItem = true
+                            feedback.notificationOccurred(.success)
                         }, label: {
                             Image(systemName: "plus")
                                 .font(.system(size: 16, weight: .black, design: .rounded))
@@ -53,8 +54,8 @@ struct ContentView: View {
                                 .background(
                                     Capsule().stroke(Color.white, lineWidth: 2)
                                 )
-                                
                         })
+                        
                         
                         //: - Edit button
                         EditButton()
@@ -68,6 +69,7 @@ struct ContentView: View {
                         //: - Appearence Button
                         Button(action: {
                             isDarkMode.toggle()
+                            feedback.notificationOccurred(.success)
                         }, label: {
                             Image(systemName: isDarkMode ? "moon.circle.fill" : "moon.circle")
                                 .resizable()
@@ -89,12 +91,18 @@ struct ContentView: View {
                         .onDelete(perform: deleteItems)
                     } //: - LIST
                     .listStyle(InsetGroupedListStyle())
+                    .shadow(radius: 10)
                 } //: - VSTACK
+                .blur(radius: showNewTaskItem ? 8 : 0, opaque: false)
+                .transition(.move(edge: .bottom))
+                .animation(.easeOut(duration: 0.5))
                 
                 // MARK: -  NEW TASK ITEM
                 
                 if showNewTaskItem {
-                    BlankView()
+                    BlankView(
+                        backgroundColor:isDarkMode ? Color.black : Color.gray,
+                        backgroundOpacity:isDarkMode ? 0.3 : 0.5)
                         .onTapGesture {
                             withAnimation() {
                                 showNewTaskItem = false
@@ -112,6 +120,7 @@ struct ContentView: View {
             .navigationBarHidden(true)
             .background(
                 BackgroundImageView()
+                    .blur(radius: showNewTaskItem ? 8 : 0, opaque: false)
             )
             .background(
                 backgroundGradient.ignoresSafeArea(.all)
